@@ -44,7 +44,7 @@ DROP TABLE IF EXISTS wage_requirements;
 CREATE TABLE wage_requirements (
 	wage_requirement_id serial PRIMARY KEY,
 	minimum int,
-	maxiumum int,
+	maximum int,
 	talent_id int REFERENCES talent,
 	type varchar(8) CHECK (type IN ('salary', 'hourly')),
 	created_at timestamp,

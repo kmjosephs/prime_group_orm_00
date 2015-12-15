@@ -14,5 +14,25 @@ router.get('/', function(req, res, next) {
       next(err);
     });
 });
+/* POST talent */
+router.post('/', function(req, res, next) {
+  Talent.forge({
+    talent_legacy_id: req.body.talentLegacyId,
+    first_name: req.body.firstName,
+    last_name: req.body.lastName,
+    city: req.body.city,
+    state: req.body.state
+  })
+    .save()
+    .then(function(talent){
+      res.json({talentId: talent.get('talent_id')});
+    })
+    .catch(function(err) {
+      next(err);
+    });
+});
 
+//TODO: PUT route to update a talent
+
+//TODO: DELETE route to delete a talent
 module.exports = router;
